@@ -1,11 +1,19 @@
 import TaskCard from './TaskCard'
+import { TaskContext } from '../context/TaskContext'
+import { useContext } from 'react'
 
-function TaskList(props) {
+function TaskList() {
+    const { tasks } = useContext(TaskContext)
+
+    if (tasks.length === 0) {
+        return <h1>No hay tareas</h1>
+    }
+
     return (
         <>
-            { props.tasks.map((task, i) => (
+            { tasks.map((task, i) => (
                 /* el key tambien se puede poner en el componente */
-                <TaskCard key={i} task={task} deleteTask={props.deleteTask} />
+                <TaskCard key={i} task={task} />
             )) }    
         </>
     )

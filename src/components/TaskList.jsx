@@ -6,16 +6,16 @@ function TaskList() {
     const { tasks } = useContext(TaskContext)
 
     if (tasks.length === 0) {
-        return <h1>No hay tareas</h1>
+        return <h1 className='text-white text-4xl font-bold text-center'>No hay tareas</h1>
     }
 
     return (
-        <>
+        <div className='grid grid-cols-3 gap-2'>
             { tasks.map((task, i) => (
                 /* el key tambien se puede poner en el componente */
                 <TaskCard key={i} task={task} />
             )) }    
-        </>
+        </div>
     )
 }
 
